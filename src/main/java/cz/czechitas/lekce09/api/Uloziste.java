@@ -30,12 +30,12 @@ public class Uloziste {
         nacistPlochuZeSouboru(Paths.get("data/level-01.json"));
     }
 
+    /**
+     * Načte objekt UlozenyStav pomocí objectMapper.readValue(file, UlozenyStav.class).
+     * Získá z UlozenyStav souřadnice kočky a myši.
+     * Zapíše tyto souřadnice do objektů kočky a myši pomocí setLocation().
+     */
     public void nacistStavZeSouboru(Path path)  throws IOException {
-        // TODO
-        // Načíst objekt UlozenyStav pomocí objectMapper.readValue(file, UlozenyStav.class)
-        // Získat z UlozenyStav souřadnice kočky a myši
-        // Zapsat tyto souřadnice do objektů kočky a myši pomocí setLocation()
-
         UlozenyStav ulozenyStav = objectMapper.readValue(path.toFile(), UlozenyStav.class);
 
         Point souradniceKocky = ulozenyStav.getCat();
@@ -49,16 +49,17 @@ public class Uloziste {
         nacistStavZeSouboru(Paths.get("data/stav.json"));
     }
 
+    /**
+     * Vytvoří objekt UlozenyStav.
+     * Uloží do něj souřadnice kočky a myši – souřadnice získáte voláním getLocation().
+     * Uloží objekt UlozenyStav do souboru pomocí objectMapper.writeValue(file, object).
+     */
     public void ulozitStavDoSouboru(Path path)  throws IOException {
-        // TODO
-        // Vytvořit objekt UlozenyStav
-        // Uložit do něj souřadnice kočky a myši – souřadnice získáte voláním getLocation()
-        // Uložit objekt UlozenyStav do souboru pomocí objectMapper.writeValue(file, object)
-
         UlozenyStav ulozenyStav = new UlozenyStav();
 
         Point souradniceKocky = cat.getLocation();
         Point souradniceMysi = mouse.getLocation();
+
         ulozenyStav.setCat(souradniceKocky);
         ulozenyStav.setMouse(souradniceMysi);
 
