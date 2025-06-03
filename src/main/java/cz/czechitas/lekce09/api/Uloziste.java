@@ -38,11 +38,11 @@ public class Uloziste {
     public void nacistStavZeSouboru(Path path)  throws IOException {
         UlozenyStav ulozenyStav = objectMapper.readValue(path.toFile(), UlozenyStav.class);
 
-        Point souradniceKocky = ulozenyStav.getCat();
-        Point souradniceMysi = ulozenyStav.getMouse();
+//        Point souradniceKocky = ulozenyStav.getCat();
+//        Point souradniceMysi = ulozenyStav.getMouse();
 
-        cat.setLocation(souradniceKocky);
-        mouse.setLocation(souradniceMysi);
+        cat.setLocation(ulozenyStav.getCat());
+        mouse.setLocation(ulozenyStav.getMouse());
     }
 
     public void nacistStavZeSouboru() throws IOException {
@@ -57,11 +57,8 @@ public class Uloziste {
     public void ulozitStavDoSouboru(Path path)  throws IOException {
         UlozenyStav ulozenyStav = new UlozenyStav();
 
-        Point souradniceKocky = cat.getLocation();
-        Point souradniceMysi = mouse.getLocation();
-
-        ulozenyStav.setCat(souradniceKocky);
-        ulozenyStav.setMouse(souradniceMysi);
+        ulozenyStav.setCat(cat.getLocation());
+        ulozenyStav.setMouse(mouse.getLocation());
 
         objectMapper.writeValue(path.toFile(), ulozenyStav);
     }
